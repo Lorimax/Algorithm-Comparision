@@ -57,9 +57,9 @@ public:
 
         void addToWordsList(list<string> wordsToAdd, WordList* ptrList);
 
-        string findWordBySpace(string line, unsigned int currentPosition);
+        string seperateWordBySpace(string& line, unsigned int& currentPosition);
 
-        void sortOutApostrophe(string word);
+        void sortOutApostrophe(string& word);
 
         list<string> sortOutHyphen(string word);
 

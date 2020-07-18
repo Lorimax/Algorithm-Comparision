@@ -33,7 +33,7 @@ public:
     int compareCell(ListCell* cellToCompare);
 
 private:
-    void eraseNonAlphabeticalCharacters(register int letterIndex);
+    void eraseNonAlphabeticalCharacters(register int& letterIndex);
 
     void turnUpperToLowerCase(register int letterIndex);
 
