@@ -52,14 +52,10 @@ void help(){
 
 //execute a new Test
 void newTest(string inputFileName){
-
     clock_t start;
     clock_t eend;
-
     double time_result;
-
     unsigned static int testNumber = 1; //counter for the number of tests
-
     //create unique file name for the output file
     string outputFileName = "outputTest";
     outputFileName.append(to_string(testNumber));
@@ -73,7 +69,6 @@ void newTest(string inputFileName){
     char userChoice;
     Text::chooseAlgorithm(inputFileName);
     cin >> userChoice;
-
     switch(userChoice){
         case 'R':
         case 'r':
@@ -105,18 +100,14 @@ void newTest(string inputFileName){
     }
 
     algorithmHandle.exportData(); //export data, store sorted list in output file
-
     Text::presentResults(inputFileName, outputFileName, testNumber, time_result);
-
     testNumber++; //count up the number of tests
-
 }
 
 //specify parameters for a new Test
 void testMenu(){
     Text::testDescription();
     bool returnToMenu = false;
-    bool testOtherFile;
     char userChoice;
     string inputFileName;
     while(!returnToMenu){
@@ -143,34 +134,29 @@ void testMenu(){
         }
 
 
-        testOtherFile = false;
-        while(!testOtherFile){
-            Text::testMenuTestAnotherFile();
-            cin >> userChoice;
-
-            switch(userChoice){
-                case 'S':
-                case 's':
-                    newTest(inputFileName);
-                    break;
-                case 'R':
-                case 'r':
-                    testOtherFile = true;
-                    returnToMenu = true;
-                    break;
-                case 'O':
-                case 'o':
-                    testOtherFile = true;
-                    break;
-                default:
-                    break;
-            }
+    bool testOtherFile = false;
+    while(!testOtherFile){
+        Text::testMenuTestAnotherFile();
+        cin >> userChoice;
+        switch(userChoice){
+            case 'S':
+            case 's':
+                newTest(inputFileName);
+                break;
+            case 'R':
+            case 'r':
+                testOtherFile = true;
+                returnToMenu = true;
+                break;
+            case 'O':
+            case 'o':
+                testOtherFile = true;
+                break;
+            default:
+                break;
         }
-
-
     }
-
-
+}
 };
 
 

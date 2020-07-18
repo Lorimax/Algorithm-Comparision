@@ -49,16 +49,16 @@ void SortAlgorithm::init(){
 }
 
 bool SortAlgorithm::checkIfFileNamesSpecified(){
-       if(!_inputFileName.size()){ //check if input file name is specified
+    if(!_inputFileName.size()){ //check if input file name is specified
         writeNoInputFileErrorMessage();
         return false;
-        }
+    }
 
-        if(!_inputFileName.size()){ //check if output file name is specified
+    if(!_inputFileName.size()){ //check if output file name is specified
         writeNoOutputFileErrorMessage();
         return false;
-        }
-        return true;
+    }
+    return true;
 }
 
 void SortAlgorithm::writeNoInputFileErrorMessage(){
@@ -97,7 +97,7 @@ list<string> SortAlgorithm::extractWords(string line){
     unsigned int currentPosition = 0;
     list<string> words;
     while(currentPosition != string::npos){
-        string word = findWordBySpace(line, currentPosition);
+        string word = seperateWordBySpace(line, currentPosition);
         sortOutApostrophe(word);
         list<string> wordsToAdd = sortOutHyphen(word);
         words.insert(words.end(), wordsToAdd.begin(), wordsToAdd.end());
@@ -112,14 +112,14 @@ void SortAlgorithm::addToWordsList(list<string> wordsToAdd, WordList* ptrList){
     }
 }
 
-string SortAlgorithm::findWordBySpace(string line, unsigned int currentPosition){
+string SortAlgorithm::seperateWordBySpace(string& line, unsigned int& currentPosition){
     currentPosition = line.find(' ');
     string word = line.substr(0, currentPosition);
     line = line.substr(currentPosition+1, line.size() - currentPosition);
     return word;
 }
 
-void SortAlgorithm::sortOutApostrophe(string word){
+void SortAlgorithm::sortOutApostrophe(string& word){
     unsigned int currentWordPosition = word.find(39);
     word = word.substr(0, currentWordPosition);
 }

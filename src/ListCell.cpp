@@ -1,6 +1,7 @@
 #include <ListCell.h>
 #include <stdlib.h>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -24,17 +25,19 @@ void ListCell::extractWordToCompareFromWord(){
     }
 }
 
-void ListCell::eraseNonAlphabeticalCharacters(register int letterIndex){
+void ListCell::eraseNonAlphabeticalCharacters(register int& letterIndex){
     if((_wordToCompare.at(letterIndex) < 65) || (_wordToCompare.at(letterIndex) > 122) ||
     ((_wordToCompare.at(letterIndex) > 90) && (_wordToCompare.at(letterIndex) < 97))){
         _wordToCompare.erase(_wordToCompare.begin()+letterIndex);
-        letterIndex--;
+        if(letterIndex > 0)
+            letterIndex--;
     }
 }
 
 void ListCell::turnUpperToLowerCase(register int letterIndex){
-    if((_wordToCompare.at(letterIndex) >= 65) && (_wordToCompare.at(letterIndex) <= 90))
+    if((_wordToCompare.size() > 0) && (_wordToCompare.at(letterIndex) >= 65) && (_wordToCompare.at(letterIndex) <= 90)){
         _wordToCompare.at(letterIndex) += 32;
+    }
 }
 
 ListCell::~ListCell(){}
