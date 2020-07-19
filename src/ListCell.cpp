@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 ListCell::ListCell(string _word, ListCell*_nextCell){
         this->_word = _word; //assign the word
         this->_nextCell = _nextCell; //assign the next cell
@@ -20,19 +21,10 @@ void ListCell::extractWordToCompareFromWord(){
     _wordToCompare = _word;
     //here _wordToCompare is set to a string with only lowercase alphabetical letters
     for(register int letterIndex = 0; letterIndex<_wordToCompare.length(); letterIndex++){
-        eraseNonAlphabeticalCharacters(letterIndex);
         turnUpperToLowerCase(letterIndex);
     }
 }
 
-void ListCell::eraseNonAlphabeticalCharacters(register int& letterIndex){
-    if((_wordToCompare.at(letterIndex) < 65) || (_wordToCompare.at(letterIndex) > 122) ||
-    ((_wordToCompare.at(letterIndex) > 90) && (_wordToCompare.at(letterIndex) < 97))){
-        _wordToCompare.erase(_wordToCompare.begin()+letterIndex);
-        if(letterIndex > 0)
-            letterIndex--;
-    }
-}
 
 void ListCell::turnUpperToLowerCase(register int letterIndex){
     if((_wordToCompare.size() > 0) && (_wordToCompare.at(letterIndex) >= 65) && (_wordToCompare.at(letterIndex) <= 90)){
@@ -40,7 +32,9 @@ void ListCell::turnUpperToLowerCase(register int letterIndex){
     }
 }
 
-ListCell::~ListCell(){}
+ListCell::~ListCell(){
+    delete _nextCell;
+}
 
 string ListCell::getWord(){
     return _word;

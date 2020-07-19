@@ -43,7 +43,7 @@ void WordList::clearList(){
     ListCell* listPtrA = firstCell;
     ListCell* listPtrB;
     deleteElements(listPtrA, listPtrB);
-    firstCell = nullptr; //set pointer to first cell to 0
+    delete firstCell; //set pointer to first cell to 0;
     deleteLastElement(listPtrA);
 }
 
@@ -58,7 +58,7 @@ void WordList::deleteElements(ListCell* listPtrA, ListCell* listPtrB){
 }
 
 void WordList::deleteLastElement(ListCell* lastElementPtr){
-        lastElementPtr->setNext(nullptr);
+        lastElementPtr->~ListCell();
         delete lastElementPtr;
 }
 

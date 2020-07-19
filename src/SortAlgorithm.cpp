@@ -29,6 +29,7 @@ SortAlgorithm::~SortAlgorithm()
     if(_outputObject.is_open()) //check if output file is open
         _outputObject.close(); //close output file
 
+    ptrList->~WordList();
     delete ptrList;
 }
 
@@ -132,11 +133,23 @@ list<string> SortAlgorithm::sortOutHyphen(string word){
         currentWordPosition = word.find('-');
         word = wordResidual.substr(0, currentWordPosition);
         wordResidual = wordResidual.substr(currentWordPosition+1, wordResidual.size() - currentWordPosition);
+        eraseNonAlphabeticalCharacters(word);
         words.insert(words.end(), word);
     }
     return words;
 }
 
+
+void SortAlgorithm::eraseNonAlphabeticalCharacters(string& word){
+    for(register int letterIndex = 0; letterIndex<word.length(); letterIndex++){
+        if((word.at(letterIndex) < 65) || (word.at(letterIndex) > 122) ||
+        ((word.at(letterIndex) > 90) && (word.at(letterIndex) < 97))){
+            word.erase(word.begin()+letterIndex);
+            if(letterIndex > 0)
+                letterIndex--;
+        }
+    }
+}
 //write data in output file
 void SortAlgorithm::exportData(){
     init();

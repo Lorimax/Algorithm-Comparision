@@ -158,4 +158,18 @@ namespace Text{
         cout << "Execution time: " << time_result << " seconds" << endl;
         cout << endl;
     }
+
+    void testIterativeAlgorithm(unsigned int testNumber, std::string inputFileName){
+        using namespace std;
+        cout << endl;
+        cout << "Test number " << testNumber << endl;
+        cout << "Sorting " << inputFileName << " iteratively...";
+    }
+
+    void testRecursiveAlgorithm(unsigned int testNumber, std::string inputFileName){
+        using namespace std;
+        cout << endl;
+        cout << "Test number " << testNumber << endl;
+        cout << "Sorting " << inputFileName << " recursively...";
+    }
 }
