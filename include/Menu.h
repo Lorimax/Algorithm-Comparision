@@ -5,8 +5,9 @@
 #include<string>
 #include <windows.h>
 #include <psapi.h>
+#include <SortAlgorithm.h>
 
-using namespace std;
+namespace Menu{
 
 void basicMenuText();
 
@@ -14,10 +15,10 @@ void information();
 
 void help();
 
-void newTest(string inputFileName);
-
 void testMenu();
 
 void PrintMemoryInfo( DWORD processID );
+
+}
 
 #endif // MENU_H

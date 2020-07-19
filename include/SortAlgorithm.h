@@ -66,6 +66,8 @@ public:
         list<string> extractWords(string line);
 
         void sortSubList(unsigned int firstIndex, unsigned int lastIndex, ListCell* pivotPtr);
+
+        void eraseNonAlphabeticalCharacters(string& word);
 };
 
 #endif // SORTALGORITHM_H
